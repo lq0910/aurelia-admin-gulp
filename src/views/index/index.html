@@ -1,0 +1,124 @@
+<template>
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-sm6 layui-col-md3">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          在线用户
+          <span class="layui-badge layui-bg-blue layuiadmin-badge">人</span>
+        </div>
+        <div class="layui-card-body layuiadmin-card-list">
+          <p class="layuiadmin-big-font">${onlines.length}</p>
+          <!-- <p>
+            总计访问量
+            <span class="layuiadmin-span-color">88万 <i class="layui-icon"></i></span>
+          </p> -->
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-sm6 layui-col-md3">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          总订单
+          <span class="layui-badge layui-bg-cyan layuiadmin-badge">个</span>
+        </div>
+        <div class="layui-card-body layuiadmin-card-list">
+          <p class="layuiadmin-big-font">${sum_order}</p>
+          <!--  <p>
+            新订单
+            <span class="layuiadmin-span-color">10% <i class="layui-icon"></i></span>
+          </p> -->
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-sm6 layui-col-md3">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          交易额
+          <span class="layui-badge layui-bg-green layuiadmin-badge">￥</span>
+        </div>
+        <div class="layui-card-body layuiadmin-card-list">
+
+          <p class="layuiadmin-big-font">${sum_volume/100}</p>
+          <!--  <p>
+            总收入
+            <span class="layuiadmin-span-color">*** <i class="layui-icon"></i></span>
+          </p> -->
+        </div>
+      </div>
+    </div>
+    <!-- <div class="layui-col-sm6 layui-col-md3">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          活跃用户
+          <span class="layui-badge layui-bg-orange layuiadmin-badge">月</span>
+        </div>
+        <div class="layui-card-body layuiadmin-card-list">
+
+          <p class="layuiadmin-big-font">66,666</p>
+          <p>
+            最近一个月
+            <span class="layuiadmin-span-color">15% <i class="layui-icon"></i></span>
+          </p>
+        </div>
+      </div>
+    </div> -->
+    <div>
+      <!-- <div class="layui-row layui-col-space15">
+        <div class="layui-col-md6">
+            <div class="layui-card">
+                <div class="layui-card-header">待定功能</div>
+                <div class="layui-card-body">
+
+                    <div class="layui-carousel layadmin-carousel layadmin-backlog" lay-anim="" lay-indicator="inside"
+                        lay-arrow="none" style="width: 100%; height: 280px;">
+                        <div carousel-item="">
+                            <ul class="layui-row layui-col-space10 layui-this">
+                                <li class="layui-col-xs6">
+                                    <a lay-href="app/content/comment" class="layadmin-backlog-body">
+                                        <h3>待定</h3>
+                                        <p><cite>66</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-xs6">
+                                    <a lay-href="app/forum/list" class="layadmin-backlog-body">
+                                        <h3>待定</h3>
+                                        <p><cite>12</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-xs6">
+                                    <a lay-href="template/goodslist" class="layadmin-backlog-body">
+                                        <h3>待定</h3>
+                                        <p><cite>99</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-xs6">
+                                    <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});"
+                                        class="layadmin-backlog-body">
+                                        <h3>待定</h3>
+                                        <p><cite>20</cite></p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="layui-row layui-col-space10">
+                                <li class="layui-col-xs6">
+                                    <a href="javascript:;" class="layadmin-backlog-body">
+                                        <h3>待审友情链接</h3>
+                                        <p><cite style="color: #FF5722;">5</cite></p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="layui-carousel-ind">
+                            <ul>
+                                <li class="layui-this"></li>
+                                <li class=""></li>
+                            </ul>
+                        </div><button class="layui-icon layui-carousel-arrow" lay-type="sub"></button><button
+                            class="layui-icon layui-carousel-arrow" lay-type="add"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+</template>

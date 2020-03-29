@@ -1,0 +1,9 @@
+<template bindable="msg,show_loading">
+    <div id="loadingToast" style="opacity: 1;" if.bind="show_loading">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p class="weui-toast__content">${msg}</p>
+        </div>
+    </div>
+</template>

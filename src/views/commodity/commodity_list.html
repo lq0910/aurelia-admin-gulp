@@ -1,0 +1,83 @@
+<template>
+    <div class="layui-fluid">
+
+        <!-- <div class="layui-row layui-col-space10" style="margin-top:15px;">
+            <div class="layui-col-md3">
+                <label class="layui-form-label"><span class="strx">*</span>商品名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" required lay-verify="required" placeholder="请输入商品名称"
+                        autocomplete="off" class="layui-input" value.bind="shop.s_name">
+                </div>
+            </div>
+
+            <div class="layui-col-md2">
+                <label class="layui-form-label">商品分类</label>
+                <div class="layui-input-block">
+                    <select name="type" id="province" lay-filter="">
+                        <option value="22"></option>
+                        <option value="22"></option>
+                        <option value="22"></option>
+                        <option value.bind="item.adcode"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-col-md2">
+                <button type="button" class="layui-btn layui-btn-sm"><i
+                        class="layui-icon layui-icon-search"></i>
+                    搜索</button>
+            </div>
+        </div> -->
+        <div class="layui-row layui-col-space10" style="margin-top:15px;">
+            <div class="layui-col-md3">
+                    <button type="button" class="layui-btn" click.delegate="goAdd()"><i class="layui-icon layui-icon-add-1"></i>
+                        添加商品</button>
+            </div>
+        </div>
+
+        <!-- 订单列表 -->
+        <table class="layui-table">
+            <colgroup>
+                <col width="100">
+                <col width="200">
+                <col>
+                <col width="200">
+                <col width="200">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>商品图片</th>
+                    <th>商品名称</th>
+                    <th>商品分类</th>
+                    <!-- <th>商品货号</th> -->
+                    <th>商品价格(元)</th>
+                    <th>商品库存</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr repeat.for="item of list">
+                    <td>${$index+1}</td>
+                    <td><image src="${oss_server_url}${item.img_url}" style="width:100px;height:100px;"></image></td>
+                    <td>${item.nickname}</td>
+                    <td>${item.name}</td>
+                    <td>${item.price/100}</td>
+                    <td>${item.stock}</td>
+                    <td style="text-align:center">
+                        <!-- <button class="layui-btn layui-btn-xs">查看</button> -->
+                        <button class="layui-btn layui-btn-normal layui-btn-xs"
+                        click.delegate="goUpdate(item)">
+                        <i class="layui-icon layui-icon-edit"></i>
+                        编辑</button>
+                        <button class="layui-btn layui-btn-xs layui-btn-danger"
+                            click.delegate="isDel(item)"><i class="layui-icon layui-icon-delete"></i>删除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- 分页 -->
+        <div id="laypage1"></div>
+    </div>
+</template>

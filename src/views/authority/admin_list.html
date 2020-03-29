@@ -1,0 +1,41 @@
+<template>
+    <div class="layui-fluid">
+        <button type="button" class="layui-btn" click.delegate="goAddadmin()"><i class="layui-icon layui-icon-add-1"></i>
+            添加管理员</button>
+        <!-- 管理员列表 -->
+        <table class="layui-table">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>管理员账号</th>
+                    <th>管理员昵称</th>
+                    <th>管理员角色</th>
+                    <!-- <th>状态</th> -->
+                    <!-- <th>创建时间</th> -->
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr repeat.for="item of admin_list">
+                    <td>${$index+1}</td>
+                    <td>${item.phone}</td>
+                    <td>${item.nickname}</td>
+                    <td>${item.role}</td>
+                    <!-- <td>${item.s_name}</td>
+                    <td>${item.address}</td> -->
+                    <td style="text-align:center">
+                        <!-- <button class="layui-btn layui-btn-xs">查看</button> -->
+                        <button class="layui-btn layui-btn-normal layui-btn-xs" click.delegate="goUpdateadmin(item)"><i class="layui-icon layui-icon-edit"></i>编辑</button>
+                        <button class="layui-btn layui-btn-xs layui-btn-danger"
+                            click.delegate="isDel(item.id)"><i class="layui-icon layui-icon-delete"></i>删除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</template>

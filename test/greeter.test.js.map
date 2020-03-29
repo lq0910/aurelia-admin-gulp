@@ -1,0 +1,1 @@
+{"version":3,"file":"greeter.test.js","sourceRoot":"","sources":["greeter.test.ts"],"names":[],"mappings":";;AAEA,6BAA8B;AAE9B,QAAQ,CAAC,eAAe,EAAE;IAEtB,EAAE,CAAC,+CAA+C,EAAE;QAChD,IAAI,QAAQ,GAAG,QAAQ,CAAC;QACxB,aAAM,CAAC,QAAQ,CAAC,CAAC,GAAG,CAAC,QAAQ,CAAC,CAAC;IACnC,CAAC,CAAC,CAAC;AAEP,CAAC,CAAC,CAAC"}

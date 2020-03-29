@@ -1,0 +1,38 @@
+<template>
+    <div class="layui-fluid">
+        <button type="button" class="layui-btn" click.delegate="goAddshop()"><i class="layui-icon layui-icon-add-1"></i> 添加店铺</button>
+        <!-- 店铺列表 -->
+        <table class="layui-table">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>店铺名称</th>
+                    <th>店铺账号</th>
+                    <th>店铺地址</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr repeat.for="item of shop_list" if.bind="item.status===1">
+                    <td>${$index+1}</td>
+                    <td>${item.s_name}</td>
+                    <td>${item.username}</td>
+                    <td>${item.address}</td>
+                    <td style="text-align:center">
+                        <button class="layui-btn layui-btn-xs" click.delegate="goSeeshop(item)"><i class="layui-icon layui-icon-search"></i>查看</button>
+                        <button class="layui-btn layui-btn-xs" click.delegate="qrCode(item)"><i class="layui-icon layui-icon-download-circle"></i>二维码</button>
+                        <button class="layui-btn layui-btn-normal layui-btn-xs" click.delegate="goUpdateshop(item)"><i class="layui-icon layui-icon-edit"></i>编辑</button>
+                        <button class="layui-btn layui-btn-xs layui-btn-danger" click.delegate="isDel(item.id)"><i class="layui-icon layui-icon-delete"></i>删除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="qrcode" style="display: none;"></div>
+        <a id="downloadLink"></a>
+    </div>
+</template>

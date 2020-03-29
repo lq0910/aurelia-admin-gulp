@@ -1,0 +1,165 @@
+<template>
+    <require from="../node_modules/teamy-utils/dist/src/cn/teamy/tab.js"></require>
+    <!-- <require from="../node_modules/teamy-utils/dist/src/cn/teamy/menu_v.js"></require> -->
+    <require from="./components/teamy/menu_v.js"></require>
+    <style>
+        .layui-bg-black {
+            background-color: #20222A !important;
+        }
+
+        .layui-nav-itemed>a {
+            color: rgba(255, 255, 255, .7) !important;
+        }
+
+        .layui-side .layui-nav .layui-nav-item a {
+            height: 50px;
+            line-height: 50px;
+        }
+
+        /*.layui-layout-admin .layui-logo {
+            background-color: #20222A !important;
+            width: 220px;
+            color: rgba(255, 255, 255, .8);
+        }*/
+
+        .layui-layout-admin .layui-header a,
+        .layui-layout-admin .layui-header a cite {
+            color: #333;
+        }
+
+        .layui-layout-admin .layui-header a:hover {
+            color: #000;
+        }
+
+        .layui-card {
+            margin-bottom: 15px;
+            border-radius: 2px;
+            background-color: #fff;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+        }
+
+        .layui-layout-admin .layui-header .layui-nav .layui-nav-item {
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .layui-nav .layui-nav-more {
+            border-top-color: #333;
+        }
+
+        .layui-nav .layui-nav-mored {
+            border-color: transparent transparent #000;
+        }
+
+        .layui-tab {
+            margin: 5px 0;
+        }
+
+        .layui-tab-title {
+            background: #fff;
+        }
+
+        .layui-layout-right {
+            right: 20px;
+        }
+
+        .layadmin-side-spread .layui-side {
+            transform: translate3d(-220px, 0, 0);
+            -webkit-transform: translate3d(-220px, 0, 0);
+            width: 220px;
+        }
+
+        /* layadmin-side-spread */
+        .layadmin-side-spread .layui-side {
+            left: 0;
+            width: 0px
+        }
+
+        .layadmin-pagetabs,
+        .layadmin-side-spread .layui-body,
+        .layadmin-side-spread .layui-footer,
+        .layadmin-side-spread .layui-layout-left {
+            left: 0;
+        }
+    </style>
+    <div id="LAY_app" class="layadmin-tabspage-none ${!showSide?'layadmin-side-spread':''}">
+        <!--  layadmin-side-spread-sm ${!showSide?'layadmin-side-spread-sm':''}-->
+        <div class="layui-layout layui-layout-admin">
+            <div class="layui-header">
+                <!-- 头部区域（可配合layui已有的水平导航） -->
+                <!--  <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="">控制台</a></li>
+                <li class="layui-nav-item"><a href="">商品管理</a></li>
+                <li class="layui-nav-item"><a href="">用户</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">其它系统</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">邮件管理</a></dd>
+                        <dd><a href="">消息管理</a></dd>
+                        <dd><a href="">授权管理</a></dd>
+                    </dl>
+                </li>
+            </ul> -->
+                <ul class="layui-nav layui-layout-left">
+                    <li class="layui-nav-item layadmin-flexible" lay-unselect="">
+                        <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩" click.trigger="flexible()">
+                            <i class="layui-icon ${!showSide?'layui-icon-spread-left':'layui-icon-shrink-right'}"
+                                id="LAY_app_flexible"></i>
+                        </a>
+                    </li>
+                    <!--<li class="layui-nav-item layui-this layui-hide-xs layui-hide-sm layui-show-md-inline-block">
+                  <a lay-href="" title="">
+                    控制台
+                  </a>
+                </li>-->
+                    <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+                        <a href="http://www.dongyilike.com/" target="_blank" title="官网">
+                            <i class="layui-icon layui-icon-website"></i>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item" lay-unselect="">
+                        <a href="javascript:;" layadmin-event="refresh" title="刷新" click.trigger="refresh()">
+                            <i class="layui-icon layui-icon-refresh-3"></i>
+                        </a>
+                    </li>
+                    <!--  <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+                    <input type="text" placeholder="搜索..." autocomplete="off" class="layui-input layui-input-search"
+                        layadmin-event="serach" lay-action="template/search/keywords=">
+                </li> -->
+
+                </ul>
+                <ul class="layui-nav layui-layout-right">
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">
+                            <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                            ${user.nickname}
+                        </a>
+                        <dl class="layui-nav-child">
+                            <!-- <dd><a href="">基本资料</a></dd> -->
+                            <dd><a href="/index_login.html#/login">退了</a></dd>
+                        </dl>
+                    </li>
+                    <!-- <li class="layui-nav-item"><a href="/index_login.html#/login">退了</a></li> -->
+                </ul>
+            </div>
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <div class="layui-side layui-side-menu">
+                <div class="layui-side-scroll">
+                    <div class="layui-logo">
+                        <h5>系统管理后台</h5>
+                    </div>
+                    <menu-v view-model.ref="menu"></menu-v>
+                </div>
+            </div>
+
+            <!-- 内容主体区域 -->
+            <div class="layui-body" id="LAY_app_body">
+                <tab></tab>
+            </div>
+
+            <!-- <div class="layui-footer">
+            © 亿米科技
+        </div> -->
+        </div>
+    </div>
+</template>

@@ -1,0 +1,17 @@
+<template>
+    <div id="${page_id}-modal-promote" class="modal" style="border-radius:0;">
+        <div class="card" style="margin:0;border-radius:0;">
+            <h5 class="card-header blue-grey darken-3 white-text" style="margin:0;border-radius:0;"><span class="card-title">${title}</span></h5>
+            <div class="card-content">
+                <div class="form-label-group ">
+                    <input id="${page_id}-x" type="text" class="validate  browser-default form-control" placeholder="${label}" autofocus=""  value.bind="value">
+                    <label for="${page_id}-x">${label}</label>
+                </div>
+            </div>
+            <div class="center-align" style="padding:30px 0 60px 0;">
+                <a class=" modal-action modal-close waves-effect waves-green btn" click.delegate="confirm()">保存</a>
+                <a class=" modal-action modal-close waves-effect waves-green btn" click.delegate="cancel()">取消</a>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,42 @@
+<template>
+    <div class="layui-fluid">
+        <!-- 用户列表 -->
+        <table class="layui-table">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+                <col width="200">
+                <col width="200">
+                <col width="200">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>头像</th>
+                    <th>用户昵称</th>
+                    <!-- <th>手机号码</th> -->
+                    <th>创建时间</th>
+                    <th>用户类型</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr repeat.for="item of user_list">
+                    <td>${$index+1}</td>
+                    <td>
+                        <img src.bind="item.avatar" alt="avatar" width="55px">
+                    </td>
+                    <td>${item.nickname}</td>
+                    <!-- <td>${item.phone}</td> -->
+                    <td>${utils.formatDate(item.created,"yy-mm-dd hh:ii:ss")}</td>
+                    <td>${item.role}</td>
+                    <td style="text-align:center">
+                        <button class="layui-btn layui-btn-xs" click.delegate="goOrder(item)"><i
+                                class="layui-icon layui-icon-search"></i> 查看订单</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</template>

@@ -1,0 +1,55 @@
+<template>
+    <div class="layui-fluid">
+        <!-- 用户订单列表 -->
+        <table class="layui-table" show.bind="order_list.length!==0">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+                <col width="200">
+                <col width="200">
+                <col width="200">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>订单号</th>
+                    <th>订单生成时间</th>
+                    <th>用户账号</th>
+                    <th>订单金额</th>
+                    <!-- <th>实付金额</th> -->
+                    <th>订单支付时间</th>
+                    <th>订单状态</th>
+                    <th>柜子</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr repeat.for="item of order_list">
+                    <td>${$index+1}</td>
+                    <td>${item.id}</td>
+                    <td>${parse_date(item.created_time)}</td>
+                    <td>${user.nickname}</td>
+                    <!-- <td>${item.s_name}</td> -->
+                    <td>${item.total_amount/100}</td>
+                    <td>${parse_date(item.pay_time)}</td>
+                    <td>${parseStatus(item.status)}</td>
+                    <td>${item.shop_name}</td>
+                    <!--  <td style="text-align:center">
+                        <button class="layui-btn layui-btn-xs" click.delegate="goOrder(item)"><i
+                                class="layui-icon layui-icon-search"></i> 查看订单</button>
+                    </td> -->
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 暂无订单 -->
+        <div class="layadmin-tips" show.bind="order_list.length===0">
+            <i class="layui-icon" style="font-size:120px">&#xe621;</i>
+            <div class="layui-text default-page">
+                <h5>
+                    暂无订单数据
+                </h5>
+            </div>
+        </div>
+    </div>
+</template>

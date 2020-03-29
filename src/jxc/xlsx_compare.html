@@ -1,0 +1,133 @@
+<template>
+    <style>
+        .search {
+            width: 800px;
+            margin: auto;
+
+            background-color: rgba(255, 255, 255, 0.1);
+
+        }
+        .card{
+            padding: 5px;
+        }
+
+        .ym-flex {
+            display: flex;
+            justify-content: space-between;
+
+
+        }
+
+
+        .layui-table td,
+        .layui-table th {
+            font-size: 0.6rem;
+            padding: 5px;
+        }
+
+        .ym-fx {
+            width: 120px;
+            height: 42px;
+        }
+    </style>
+
+    <div class="card search">
+        <div class="card-content">
+            <div class="ym-flex">
+
+                <div class="file-field ym-fx">
+                    <div class="btn btn-lg  blue darken-3 waves-effect waves-light hoverable" style="float:none;">
+                        <span>选择A文件</span>
+                        <input id="file-upload" type="file" />
+                    </div>
+                </div>
+                <div class="file-field ym-fx">
+                    <div class="btn btn-lg  blue darken-3 waves-effect waves-light hoverable " style="float:none;">
+                        <span>选择B文件</span>
+                        <input id="file-upload2" type="file" />
+                    </div>
+                </div>
+                <button class="btn blue darken-3 btn-lg  ym-fx waves-effect waves-light hoverable" type="button" click.trigger="do_import()">
+                    比对
+                </button>
+                <button class="btn  blue darken-3 btn-lg  ym-fx waves-effect waves-light hoverable" type="button" click.trigger="remove()">
+                    去重
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6">
+            <div class="card" style="min-height:500px;background-color:rgba(253, 253, 253, 0.3)">
+                <table class="layui-table highlight">
+                    <thead>
+                        <tr>
+                            <th class="center-align" style="min-width:60px;">序号(合计：${xa.length})</th>
+                            <th class="center-align" style="min-width:50px;">姓名</th>
+                            <th class="center-align">身份证</th>
+                            <th class="center-align">性别</th>
+
+                            <th class="center-align" style="min-width:60px;">出生日期</th>
+                            <th class="center-align">民族</th>
+                            <th class="center-align">行政区划</th>
+                            <th class="center-align">详址</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr repeat.for="item of xa">
+                            <td class="center-align">${item.xuhao}</td>
+                            <td class="center-align">${item.name}</td>
+                            <td class="center-align ${item.found?'red':''}">${item.id}</td>
+
+                            <td class="center-align">${item.sex}</td>
+
+                            <td class="center-align">${item.dob}</td>
+                            <td class="center-align">${item.minzu}</td>
+                            <td class="center-align" style="font-size:0.6rem;">${item.region}</td>
+                            <td class="center-align" style="font-size:0.6rem;">${item.address}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="col s6">
+            <div class="card"  style="min-height:500px;background-color:rgba(253, 253, 253, 0.3)">
+                <table class="layui-table highlight">
+                    <thead>
+                        <tr>
+                            <th class="center-align" style="min-width:80px;">决定书号(合计：${xb.length})</th>
+                            <th class="center-align" style="min-width:50px;">当事人</th>
+                            <th class="center-align">驾驶证号</th>
+                            <th class="center-align">号牌</th>
+                            <th class="center-align" style="min-width:80px;">违法时间</th>
+                            <th class="center-align" style="min-width:80px;">违法地址</th>
+                            <th class="center-align">违法行为</th>
+                            <th class="center-align">记分</th>
+                            <th class="center-align">罚款</th>
+                            <th class="center-align" style="min-width:50px;">执勤民警</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr repeat.for="item of xb">
+                            <td class="center-align">${item.juedingshu}</td>
+                            <td class="center-align">${item.name}</td>
+                            <td class="center-align ${item.found?'red':''}">${item.id}</td>
+                            <td class="center-align" style="min-width:90px;">${item.haopai}</td>
+                            <td class="center-align">${item.weifa_shijian}</td>
+                            <td class="center-align" style="font-size:0.6rem;">${item.weifa_dizhi}</td>
+                            <td class="center-align">${item.weifa_xingwei}</td>
+                            <td class="center-align">${item.jifen}</td>
+                            <td class="center-align">${item.fakuan_jine}</td>
+                            <td class="center-align">${item.zhiqin_minjing}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</template>

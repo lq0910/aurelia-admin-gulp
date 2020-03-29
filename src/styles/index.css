@@ -1,0 +1,12 @@
+body {
+    background-color: #f8f8f8;
+}
+
+/* 数据为空显示样式定义 */
+.layadmin-tips .default-page {
+    width: 500px;
+    margin: 10px auto;
+    padding-top: 10px;
+    border-top: 0;
+    font-size: 16px;
+}

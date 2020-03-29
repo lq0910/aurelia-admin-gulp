@@ -1,0 +1,254 @@
+<template>
+    <style>
+        :root {
+    --input-padding-left: 1rem;
+    --input-padding-top: 0.2rem;
+  }
+        .ym-input-group{
+
+        }
+        .ym-dropdown-content {
+            width: 100%;
+            background-color: #fff;
+            margin: 0;
+
+            /* display: none; */
+            min-width: 100px;
+            overflow-y: auto;
+            /* opacity: 0; */
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 9999;
+            -webkit-transform-origin: 0 0;
+            transform-origin: 0 0
+        }
+
+        .ym-dropdown-content:focus {
+            outline: 0
+        }
+
+        .ym-dropdown-content li {
+            clear: both;
+            color: rgba(0, 0, 0, 0.87);
+            cursor: pointer;
+            min-height: 50px;
+            line-height: 1.5rem;
+            width: 100%;
+            text-align: left
+        }
+
+        .ym-dropdown-content li:hover,
+        .ym-dropdown-content li.active {
+            background-color: #eee
+        }
+
+        .ym-dropdown-content li:focus {
+            outline: none;
+            background-color: #dadada
+        }
+
+        .ym-dropdown-content li.divider {
+            min-height: 0;
+            height: 1px
+        }
+
+        .ym-dropdown-content li>a,
+        .ym-dropdown-content li>span {
+            font-size: 16px;
+            color: #26a69a;
+            display: block;
+            line-height: 22px;
+            padding: 14px 16px
+        }
+
+        .ym-dropdown-content li>span>label {
+            top: 1px;
+            left: 0;
+            height: 18px
+        }
+
+        .ym-dropdown-content li>a>i {
+            height: inherit;
+            line-height: inherit;
+            float: left;
+            margin: 0 24px 0 0;
+            width: 24px
+        }
+
+        .select-label {
+            position: absolute
+        }
+
+        .ym-select-wrapper {
+            position: relative
+        }
+
+
+        .ym-select-wrapper.valid+label,
+        .ym-select-wrapper.invalid+label {
+            width: 100%;
+            pointer-events: none
+        }
+
+        .ym-select-wrapper input.ym-select-dropdown {
+            border: 1px solid #ced4da;
+            position: relative;
+            cursor: pointer;
+            background-color: transparent;
+            /* border: none;
+    border-bottom: 1px solid #9e9e9e; */
+            outline: none;
+            /* height: 3rem; */
+            line-height: 3rem;
+            width: 100%;
+            font-size: 16px;
+            margin: 0;
+            padding-top: 1.2rem;
+            padding-left: 1rem;
+            display: block;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            z-index: 1
+        }
+
+        .ym-select-wrapper input.ym-select-dropdown:focus {
+            border-bottom: 1px solid #26a69a
+        }
+
+        .ym-select-wrapper .caret {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            z-index: 0;
+            fill: rgba(0, 0, 0, 0.87)
+        }
+
+        .ym-select-wrapper+label {
+            position: absolute;
+            top: -26px;
+            font-size: .8rem
+        }
+
+        select:disabled {
+            color: rgba(0, 0, 0, 0.42)
+        }
+
+        .ym-select-wrapper.disabled+label {
+            color: rgba(0, 0, 0, 0.42)
+        }
+
+        .ym-select-wrapper.disabled .caret {
+            fill: rgba(0, 0, 0, 0.42)
+        }
+
+        .ym-select-wrapper input.ym-select-dropdown:disabled {
+            color: rgba(0, 0, 0, 0.42);
+            cursor: default;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        .ym-select-wrapper i {
+            color: rgba(0, 0, 0, 0.3)
+        }
+
+        .ym-select-dropdown li.disabled,
+        .ym-select-dropdown li.disabled>span,
+        .ym-select-dropdown li.optgroup {
+            color: rgba(0, 0, 0, 0.3);
+            background-color: transparent
+        }
+
+        .ym-select-dropdown.ym-dropdown-content li:hover {
+            background-color: rgba(0, 0, 0, 0.08)
+        }
+
+        .ym-select-dropdown.ym-dropdown-content li.selected {
+            background-color: rgba(0, 0, 0, 0.03)
+        }
+
+        .ym-select-dropdown.ym-dropdown-content li:focus {
+            background-color: rgba(0, 0, 0, 0.08)
+        }
+
+        .prefix~.ym-select-wrapper {
+            margin-left: 3rem;
+            width: 92%;
+            width: calc(100% - 3rem)
+        }
+
+        .prefix~label {
+            margin-left: 3rem
+        }
+
+        .ym-select-dropdown li img {
+            height: 40px;
+            width: 40px;
+            margin: 5px 15px;
+            float: right
+        }
+
+        .ym-select-dropdown li.optgroup {
+            border-top: 1px solid #eee
+        }
+
+        .ym-select-dropdown li.optgroup.selected>span {
+            color: rgba(0, 0, 0, 0.7)
+        }
+
+        .ym-select-dropdown li.optgroup>span {
+            color: rgba(0, 0, 0, 0.4)
+        }
+
+        .ym-select-dropdown li.optgroup~li.optgroup-option {
+            padding-left: 1rem
+        }
+
+  
+        .ym-select-wrapper>label {
+            position: absolute;
+            padding-top: 0.2rem;
+           padding-left: 1rem;
+            top: 0;
+            /*left: 0;*/
+            display: block;
+            width: 100%;
+            margin-bottom: 0;
+            /* Override default `<label>` margin */
+            line-height: 1.5;
+            /* color: #495057; */
+            color:#9e9e9e;
+            border: 1px solid transparent;
+            border-radius: .25rem;
+            transition: all .1s ease-in-out;
+        }
+    </style>
+    <div class="ym-select-wrapper">
+        <label class=" active" for="${page_id-input}">${label}</label>
+
+        <input id="${page_id-input}" class="ym-select-dropdown dropdown-trigger  browser-default" type="text" readonly="true" click.delegate="input_click()"
+            value.bind="selected_item_label" placeholder="品名" autofocus="" data-target="${page_id-ul}">
+
+
+        <ul show.bind="active" id="${page_id-ul}" class="ym-dropdown-content ym-select-dropdown" >
+          
+
+            <li repeat.for="item of data_source" click.delegate="item_click(item)">
+                <span>
+                    ${render_item_label(item)}
+                </span>
+            </li>
+        </ul>
+        <svg class="caret" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 10l5 5 5-5z"></path>
+            <path d="M0 0h24v24H0z" fill="none"></path>
+        </svg>
+    </div>
+</template>

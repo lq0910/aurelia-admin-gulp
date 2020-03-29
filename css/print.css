@@ -1,0 +1,78 @@
+@media print {
+    body * {
+        visibility: hidden;
+        height: 0;
+    }
+    .ym-print * {
+        visibility: visible;
+        height: auto;
+    }
+    .ym-print {
+        position: absolute;
+        top: 0;
+        left: 20px;
+    }
+    .print-note p, .print-table p {
+        font-size:17.1pt;
+    }
+
+    p.no-print {
+        display: none;
+    }
+    p.print-p {
+        display: block;
+        text-indent: 50px;
+    }
+    .ym-print button {
+        visibility: hidden;
+    }
+    .print-note input[type=text] {
+        font-size: 17.1pt;
+        text-align: center;
+        border-bottom: 1px solid black;
+    }
+    .print-note h2, .print-table h2 {
+        font-size: 23.5pt;
+      }
+    input {
+        border: none;
+    }
+    .print-note textarea {
+        font-family:"FangSong";
+        font-size: 17.1pt;
+      }
+    .print-table {
+        margin: 0;
+        padding: 0;
+    }
+    .table3 tr td {
+        text-align: center;
+    }
+    .table3.row-sm td {
+        line-height: 32pt;
+        font-size: 16pt;
+        height: 32pt;
+        border: 1pt solid black;
+    }
+    .table3.row-bg {
+        line-height: 128pt;
+        font-size: 16pt;
+        height: 128pt;
+        border: 1pt solid black;
+    }
+    .back {
+        background: none;
+    }
+    .picker * {
+        display: none;
+    }
+    /* textarea:not(.browser-default) {
+        width: 100%;
+        padding-bottom: 3px;
+        overflow: hidden;
+        border: 0;
+        font-size: 17.1pt;
+        line-height: 32pt;
+        font-weight: normal;
+    } */
+}

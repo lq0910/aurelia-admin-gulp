@@ -1,0 +1,55 @@
+<template>
+    <style>
+        .layui-input-inline .layui-form-switch {
+            margin-top: 0;
+            margin-left: 10px;
+        }
+    </style>
+    <div class="layui-fluid">
+        <button type="button" class="layui-btn" click.delegate="goAdd()"><i class="layui-icon layui-icon-add-1"></i>
+            添加分类</button>
+        <!-- 店铺列表 -->
+        <table class="layui-table">
+            <colgroup>
+                <col width="150">
+                <col>
+                <col width="200">
+                <col width="250">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>分类名称</th>
+                    <th>商品单位</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr repeat.for="item of list_all">
+                    <td>${$index+1}</td>
+                    <td>${item.name}</td>
+                    <td>${item.unit}</td>
+                    <td style="text-align:center">
+                        <form class="layui-form">
+                            <div class="layui-form-item">
+                                <!-- <button class="layui-btn layui-btn-xs">查看</button> -->
+                                <div class="layui-input-inline">
+                                    <button class="layui-btn layui-btn-normal layui-btn-xs"
+                                        click.delegate="goUpdate(item)">
+                                        <i class="layui-icon layui-icon-edit"></i>
+                                        编辑</button>
+                                    <input type="checkbox" name="class-del" lay-skin="switch" lay-filter="class-del"
+                                        lay-text="启用|禁用" value.bind="item.id" checked.bind="item.del==2?false:true">
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--  <button class="layui-btn layui-btn-xs layui-btn-danger" click.delegate="isDel(item.id)">
+                            <i class="layui-icon layui-icon-delete"></i>
+                            删除</button> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</template>

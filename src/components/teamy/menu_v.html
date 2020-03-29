@@ -1,0 +1,14 @@
+<template>
+
+    <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+    <ul class="layui-nav layui-nav-tree" lay-shrink="all" lay-filter="layadmin-system-side-menu" id="LAY-system-side-menu">
+        <li  repeat.for="menu of menus" class="layui-nav-item ${!collapsed?'':'layui-nav-itemed'}">
+            <a href="${menu.url}"><i if.bind='menu.icon!=undefined' class="layui-icon ${menu.icon}"></i>&nbsp;&nbsp;${menu.title}</a>
+            <dl if.bind="menu.sub.length>0" class="layui-nav-child">
+                <dd repeat.for="item of menu.sub">
+                    <a href="#${item.name}">&nbsp;&nbsp;${item.title}</a>
+                </dd>
+            </dl>
+        </li>
+    </ul>
+</template>

@@ -1,0 +1,52 @@
+<template> 
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+              <div class="layui-card">
+                <!-- <div class="layui-card-header">卡片面板</div> -->
+                <div class="layui-card-body" style="padding:20px;padding-left:50px;line-height:28px;">
+                    <img src="${oss_server_url}${pramshop.s_img}" style="width:150px;height:150px;margin-bottom:10px;"><br>
+                    店铺名称: ${pramshop.s_name}<br>
+                    店铺位置: ${pramshop.address}
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- 商品列表 -->
+        <table class="layui-table">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>盘子</th>
+                    <th>商品名称</th>
+                    <th>图片</th>
+                    <th>商品货号</th>
+                    <th>重量</th>
+                    <th>价格</th>
+                    <!-- <th>操作</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+                <tr repeat.for="item of shop_list">
+                    <td>${$index+1}</td>
+                    <td>${item.cell_id}</td>
+                    <td>${item.commodity_name}</td>
+                    <td><image src="${oss_server_url}${item.commodity_url}" style="width:80px;height:80px;"></image></td>
+                    <td>${item.goods_num}</td>
+                    <td>${item.weight}</td>
+                    <td>${item.price/100}</td>
+                    <!--<td style="text-align:center">
+                        <button class="layui-btn layui-btn-xs" click.delegate="editshop(item)">编辑</button>
+                        <button class="layui-btn layui-btn-xs layui-btn-danger" click.delegate="isDel(item.id)">删除</button>
+                    </td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</template>
