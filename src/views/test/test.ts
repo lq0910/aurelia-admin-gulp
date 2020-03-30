@@ -38,13 +38,6 @@ export class Test {
             btype: "管理费",
             bumen: "技术部",
             desc: "66"
-        },
-        {
-            nickname: "test4",
-            money: 66,
-            btype: "差旅费",
-            bumen: "办公室",
-            desc: "66"
         }
     ]
     static inject() { return [Router] };
@@ -98,8 +91,15 @@ export class Test {
             console.log('getData ok', this.list_all)
         } else {
             this.list_all = this.list_all1
+            s.setItem('data-list', JSON.stringify(this.list_all1))
         }
         this.chatData(this.list_all)
+    }
+
+    clearData() {
+        let s = localStorage
+        s.removeItem('data-list')
+        this.layer.msg('数据已清空')
     }
 
     chatData(list: Array<any>) {
